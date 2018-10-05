@@ -77,11 +77,6 @@ CREATE TABLE `student` (
 -- Dumping data for table `student`
 --
 
-INSERT INTO `student` (`Fname`, `Lname`) VALUES
-('Rahul', 'Desai'),
-('Shashikant ', 'Kadam'),
-('rakesh', 'Kumar'),
-('Rahul', 'Desai');
 
 --
 -- Indexes for dumped tables
