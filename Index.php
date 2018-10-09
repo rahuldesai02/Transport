@@ -1,9 +1,12 @@
 <html>
 <body>
-<h1>A SMALL EXAMPLE DATABASE TO INSERT SOME DATA IN MYSQL DATABASE USING PHP </h1>
-<form action="Insert.php" method="post">
-Firstname:<input type="text" name="fname"/><br><br>
-Lastname:<input type="text" name="lname"/><br><br>
+<h1>Enter Bus Details</h1>
+<form action="InsertBus.php" method="post">
+Bus_ID:<input type="text" name="busid"/><br><br>
+Bus_Name:<input type="text" name="busname"/><br><br>
+Reg_No:<input type="text" name="regno"/><br><br>
+Bus_Manufacture:<input type="text" name="busmanufacturer"/><br><br>
+Bus_Color:<input type="text" name="buscolour"/><br><br>
 <input type="Submit"/>
 </form>
 </body>
