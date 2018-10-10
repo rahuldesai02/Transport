@@ -1,12 +1,19 @@
 <?php
-		
 	$link=mysqli_connect("localhost","root","","transport");
 	if($link === false)
 	{
 		die("ERROR:COULD NOT CONNECT".mysqli_connect_error());
 	}
-	$sql="INSERT INTO bus_stop(Bus_Stop_Id, Place, Coordinates) values ('$_POST[busstopid]','$_POST[place]','$_POST[coordinates]')";
-
+	if(empty($_POST['useruname']))
+	{
+		echo "username cannot be empty";
+	}
+	elseif(empty($_POST['userpassword']))
+	{
+		echo "password cannot be empty";
+		exit;
+	}
+	//$sql="INSERT INTO customer(username,password) values ('$_POST[newname]','$_POST[newpassword]')";
 	if(mysqli_query($link,$sql))
 	{
 		echo "Record inserted successfully";

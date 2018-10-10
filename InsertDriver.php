@@ -5,7 +5,7 @@
 	{
 		die("ERROR:COULD NOT CONNECT".mysqli_connect_error());
 	}
-	$sql="INSERT INTO driver values ('$_POST[drivername]','$_POST[driverid]','$_POST[contactno]','$_POST[salary]','$_POST[license]')";
+	$sql="INSERT INTO driver(Name, Driver_Id, Contact_No, Salary, License_No) values ('$_POST[drivername]','$_POST[driverid]','$_POST[contactno]','$_POST[salary]','$_POST[license]')";
 
 	if(mysqli_query($link,$sql))
 	{

@@ -5,7 +5,7 @@
 	{
 		die("ERROR:COULD NOT CONNECT".mysqli_connect_error());
 	}
-	$sql="INSERT INTO conductor values ('$_POST[conductorname]','$_POST[conductorid]','$_POST[contactno]','$_POST[salary]')";
+	$sql="INSERT INTO conductor(Name, Conductor_Id, Contact_No, Salary) values ('$_POST[conductorname]','$_POST[conductorid]','$_POST[contactno]','$_POST[salary]')";
 
 	if(mysqli_query($link,$sql))
 	{

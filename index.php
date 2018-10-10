@@ -1,97 +1,78 @@
+<?php
+	echo '<link href="css/bootstrap.min.css" rel="stylesheet" type="text/css" />';
+	echo '<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>';
+	echo '<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>';
+?>
 <!DOCTYPE html>
-<html>
+<html lang = "en">
 	<head>
+		<meta charset = "utf-8">
+		<meta name="viewport" content="width=device-width, initial-scale=1">
 		<title>
 			Transport DBMS
 		</title>
-		<style>
-			body{
-				margin:auto;
-				text-align:center;
-			}
-			h1{
-				color:blue;
-			}
-			div{
-				display:none;
-				margin:auto;
-				padding-left:50px;
-				text-align:left;
-			}
-		</style>
-		<script>
-			function insertBus(){
-				document.getElementById("insertDriver").style.display = "none";
-				document.getElementById("insertConductor").style.display = "none";
-				document.getElementById("insertBusStop").style.display = "none";
-				document.getElementById("insertBus").style.display = "block";
-			}
-			function insertDriver(){
-				document.getElementById("insertConductor").style.display = "none";
-				document.getElementById("insertBusStop").style.display = "none";
-				document.getElementById("insertBus").style.display = "none";
-				document.getElementById("insertDriver").style.display = "block";
-			}
-			function insertConductor(){
-				document.getElementById("insertBusStop").style.display = "none";
-				document.getElementById("insertBus").style.display = "none";
-				document.getElementById("insertDriver").style.display = "none";
-				document.getElementById("insertConductor").style.display = "block";
-			}
-			function insertBusStop(){
-				document.getElementById("insertBus").style.display = "none";
-				document.getElementById("insertDriver").style.display = "none";
-				document.getElementById("insertConductor").style.display = "none";
-				document.getElementById("insertBusStop").style.display = "block";
-			}
-		</script>
 	</head>
-	<body>
+	<body class = "container-fluid" background = "/bg.jpg">
 		<h1>TRANSPORT DBMS</h1>
-		<button type = "button" onclick = "insertBus()">Click here to insert bus information</button>
-		<button type = "button" onclick = "insertDriver()">Click here to insert driver information</button>
-		<button type = "button" onclick = "insertConductor()">Click here to insert conductor information</button>
-		<button type = "button" onclick = "insertBusStop()">Click here to insert bus stop information</button>
-		<div id = "insertBus">
-		<h1>Enter Bus Details</h1>
-		<form action="InsertBus.php" method="post">
-			Bus ID:<input type="text" name="busid"/><br><br>
-			Bus Name:<input type="text" name="busname"/><br><br>
-			Registration No:<input type="text" name="regno"/><br><br>
-			Bus Manufacturer:<input type="text" name="busmanufacturer"/><br><br>
-			Bus Color:<input type="text" name="buscolour"/><br><br>
-			<input type="Submit"/>
-		</form>
+		 <nav class="navbar navbar-inverse">
+		<div class="container-fluid">
+			<div class="navbar-header">
+				<a class="navbar-brand" href="#">Welcome</a>
+			</div>
+			<ul class="nav navbar-nav">
+					<li class="dropdown">
+						<a class="dropdown-toggle text-center " data-toggle="dropdown" href="#">Administrator
+							<span class="caret"></span></a>
+							<form action = "/Admin.php" class = "dropdown-menu">
+							<div class="form-group">
+								<label for = "username">Username:</label>
+								<input type = "text" class="form-control" id="email"  placeholder="Enter username" name = "adminuname"/>
+							</div>
+							<div class="form-group">
+								<label for = "pwd">Password:</label>
+								<input type = "password" class="form-control" placeholder="Enter password" id="pwd" name = "adminpassword"/>
+							</div>
+								<button type="submit" class="btn btn-default">Submit</button>
+							</form>
+					</li>
+					<li class="dropdown">
+						<a class="dropdown-toggle text-center" data-toggle="dropdown" href="#">Customer Login
+							<span class="caret"></span></a>
+							<form action = "/Login.php" class = "dropdown-menu" method="post">
+							<div class="form-group">
+								<label for = "username">Username:</label>
+								<input type = "text" class="form-control" id="username"  placeholder="Enter username" name = "useruname"/>
+							</div>
+							<div class="form-group">
+								<label for = "pwd" >Password:</label>
+								<input type = "password" class="form-control" id="pwd" placeholder="Enter password" name = "userpassword"/>
+							</div>
+								<button type="submit" class="btn btn-default">Submit</button>
+							</form>
+					</li>
+					<li class="dropdown">
+						<a class="dropdown-toggle text-center" data-toggle="dropdown" href="#">Customer Sign-Up
+							<span class="caret"></span></a>
+							<form action = "SignUp.php" class = "dropdown-menu" method="post">
+								<div class="form-group">
+								<label for = "username">Create Username:</label>
+								<input type = "text" class="form-control" id="username"  placeholder="Enter username" name = "newname"/>
+								</div>
+								<div class="form-group">
+								<label for = "pwd" >Create Password:</label>
+								<input type = "password" class="form-control" id="pwd" placeholder="Enter password" name = "newpassword"/>
+								</div>
+								<div class="form-group">
+								<label for = "pwd" >Confirm Pasword:</label>
+								<input type = "password" class="form-control" id="pwd" placeholder="Enter password" name = "confirmpassword"/>
+								</div>
+								<button type="submit" class="btn btn-default">Submit</button>
+								
+							</form>
+					</li>
+					
+			</ul>
 		</div>
-		<div id = "insertDriver">
-		<h1>Enter Driver Details</h1>
-		<form action="InsertDriver.php" method="post">
-			Driver ID:<input type="text" name="driverid"/><br><br>
-			Driver Name:<input type="text" name="drivername"/><br><br>
-			Contact No:<input type="text" name="contactno"/><br><br>
-			Salary:<input type="text" name="salary"/><br><br>
-			License No:<input type="text" name="license"/><br><br>
-			<input type="Submit"/>
-		</form>
-		</div>
-		<div id = "insertConductor">
-		<h1>Enter Conductor Details</h1>
-		<form action="InsertConductor.php" method="post">
-			Conductor ID:<input type="text" name="conductorid"/><br><br>
-			Conductor Name:<input type="text" name="conductorname"/><br><br>
-			Contact No:<input type="text" name="contactno"/><br><br>
-			Salary:<input type="text" name="salary"/><br><br>
-			<input type="Submit"/>
-		</form>
-		</div>
-		<div id = "insertBusStop">
-		<h1>Enter Bus Stop Details</h1>
-		<form action="InsertBusStop.php" method="post">
-			Bus_Stop_ID:<input type="text" name="busstopid"/><br><br>
-			Place:<input type="text" name="place"/><br><br>
-			Coordinates:<input type="text" name="coordinates"/><br><br>
-			<input type="Submit"/>
-		</form>
-		</div>
+		</nav> 
 	</body>
 </html>
