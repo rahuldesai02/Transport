@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Oct 10, 2018 at 07:14 AM
+-- Generation Time: Oct 13, 2018 at 02:05 PM
 -- Server version: 10.1.35-MariaDB
 -- PHP Version: 7.2.9
 
@@ -37,7 +37,7 @@ CREATE TABLE `bus` (
   `Driver_Id` int(11) DEFAULT NULL,
   `Conductor_Id` int(11) NOT NULL,
   `Owner_ID` int(11) NOT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=latin1 COMMENT='Contains detail information about each bus';
+) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
 -- --------------------------------------------------------
 
@@ -49,7 +49,7 @@ CREATE TABLE `bus_stop` (
   `Bus_Stop_ID` int(11) NOT NULL COMMENT 'Unique ID given to the bus_stop',
   `Place` varchar(30) NOT NULL COMMENT 'Place of the bus_stop',
   `Coordinates` float NOT NULL COMMENT 'Latitude and longitudes of the location'
-) ENGINE=InnoDB DEFAULT CHARSET=latin1 COMMENT='Stores data of bus stops';
+) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
 -- --------------------------------------------------------
 
@@ -75,7 +75,7 @@ CREATE TABLE `conductor` (
   `Conductor_Id` int(11) NOT NULL COMMENT 'Unique ID given to th conductor',
   `Contact_No` int(11) NOT NULL COMMENT 'Phone number of the conductor',
   `Salary` int(11) NOT NULL COMMENT 'Salary of the conductor'
-) ENGINE=InnoDB DEFAULT CHARSET=latin1 COMMENT='This table contains information about the conductors';
+) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
 -- --------------------------------------------------------
 
@@ -89,7 +89,7 @@ CREATE TABLE `driver` (
   `Contact_No` int(11) NOT NULL COMMENT 'Phone number of the driver',
   `Salary` int(11) NOT NULL COMMENT 'Salary of the driver',
   `License_No` varchar(30) NOT NULL COMMENT 'License number of the driver'
-) ENGINE=InnoDB DEFAULT CHARSET=latin1 COMMENT='This table contains the information about drivers';
+) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
 -- --------------------------------------------------------
 
@@ -101,7 +101,7 @@ CREATE TABLE `owner` (
   `Owner_ID` int(11) NOT NULL,
   `Owner_Name` varchar(30) NOT NULL,
   `Contact_No` int(11) NOT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=latin1 COMMENT='This table contains information about the bus owner';
+) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
 --
 -- Indexes for dumped tables
@@ -122,6 +122,13 @@ ALTER TABLE `bus`
 --
 ALTER TABLE `bus_stop`
   ADD PRIMARY KEY (`Bus_Stop_ID`);
+
+--
+-- Indexes for table `bus_stops_at`
+--
+ALTER TABLE `bus_stops_at`
+  ADD KEY `Bus_Id` (`Bus_Id`),
+  ADD KEY `Bus_stop_Id` (`Bus_stop_Id`);
 
 --
 -- Indexes for table `conductor`
@@ -150,27 +157,16 @@ ALTER TABLE `owner`
 -- Constraints for table `bus`
 --
 ALTER TABLE `bus`
-  ADD CONSTRAINT `Conductor_Id_Constaint` FOREIGN KEY (`Conductor_Id`) REFERENCES `conductor` (`Conductor_Id`) ON UPDATE CASCADE,
-  ADD CONSTRAINT `Driver_Id_Constraint` FOREIGN KEY (`Driver_Id`) REFERENCES `driver` (`Driver_Id`) ON UPDATE CASCADE,
-  ADD CONSTRAINT `Owner_Id_Constaint` FOREIGN KEY (`Owner_ID`) REFERENCES `owner` (`Owner_ID`) ON UPDATE CASCADE;
+  ADD CONSTRAINT `bus_ibfk_1` FOREIGN KEY (`Driver_Id`) REFERENCES `driver` (`Driver_Id`),
+  ADD CONSTRAINT `bus_ibfk_2` FOREIGN KEY (`Owner_ID`) REFERENCES `owner` (`Owner_ID`),
+  ADD CONSTRAINT `bus_ibfk_3` FOREIGN KEY (`Conductor_Id`) REFERENCES `conductor` (`Conductor_Id`);
 
 --
--- Constraints for table `bus_stop`
+-- Constraints for table `bus_stops_at`
 --
-ALTER TABLE `bus_stop`
-  ADD CONSTRAINT `bus_stop_ibfk_1` FOREIGN KEY (`Bus_Stop_ID`) REFERENCES `bus` (`Bus_Id`);
-
---
--- Constraints for table `conductor`
---
-ALTER TABLE `conductor`
-  ADD CONSTRAINT `conductor_ibfk_1` FOREIGN KEY (`Conductor_Id`) REFERENCES `bus` (`Bus_Id`);
-
---
--- Constraints for table `driver`
---
-ALTER TABLE `driver`
-  ADD CONSTRAINT `driver_ibfk_1` FOREIGN KEY (`Driver_Id`) REFERENCES `bus` (`Bus_Id`);
+ALTER TABLE `bus_stops_at`
+  ADD CONSTRAINT `bus_stops_at_ibfk_1` FOREIGN KEY (`Bus_Id`) REFERENCES `bus` (`Bus_Id`),
+  ADD CONSTRAINT `bus_stops_at_ibfk_2` FOREIGN KEY (`Bus_stop_Id`) REFERENCES `bus_stop` (`Bus_Stop_ID`);
 COMMIT;
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
