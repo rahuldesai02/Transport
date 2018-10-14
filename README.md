@@ -1,3 +1,3 @@
 # Transport
 
-Repository for College project on transport database
+Repository for College project on Bus Transport Database
