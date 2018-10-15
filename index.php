@@ -1,7 +1,7 @@
 <?php
 	echo '<link href="css/bootstrap.min.css" rel="stylesheet" type="text/css" />';
-	echo '<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>';
-	echo '<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>';
+	echo '<script src="js/jquery-3.3.1.min.js"></script>';
+	echo '<script src="js/bootstrap.min.js"></script>';
 ?>
 <!DOCTYPE html>
 <html lang = "en">
@@ -12,9 +12,9 @@
 			Transport DBMS
 		</title>
 	</head>
-	<body class = "container-fluid" background = "/bg.jpg">
+	<body class = "container-fluid" background = "bg.jpg">
 		<h1>TRANSPORT DBMS</h1>
-		 <nav class="navbar navbar-inverse">
+		<nav class="navbar navbar-inverse">
 		<div class="container-fluid">
 			<div class="navbar-header">
 				<a class="navbar-brand" href="#">Welcome</a>
@@ -23,7 +23,7 @@
 					<li class="dropdown">
 						<a class="dropdown-toggle text-center " data-toggle="dropdown" href="#">Administrator
 							<span class="caret"></span></a>
-							<form action = "/Admin.php" class = "dropdown-menu">
+							<form action = "Admin.php" class = "dropdown-menu" method="post">
 							<div class="form-group">
 								<label for = "username">Username:</label>
 								<input type = "text" class="form-control" id="email"  placeholder="Enter username" name = "adminuname"/>
@@ -38,7 +38,7 @@
 					<li class="dropdown">
 						<a class="dropdown-toggle text-center" data-toggle="dropdown" href="#">Customer Login
 							<span class="caret"></span></a>
-							<form action = "/Login.php" class = "dropdown-menu" method="post">
+							<form action = "Login.php" class = "dropdown-menu" method="post">
 							<div class="form-group">
 								<label for = "username">Username:</label>
 								<input type = "text" class="form-control" id="username"  placeholder="Enter username" name = "useruname"/>

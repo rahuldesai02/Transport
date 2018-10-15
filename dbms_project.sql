@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Oct 13, 2018 at 02:05 PM
+-- Generation Time: Oct 15, 2018 at 12:57 PM
 -- Server version: 10.1.35-MariaDB
 -- PHP Version: 7.2.9
 
@@ -19,7 +19,7 @@ SET time_zone = "+00:00";
 /*!40101 SET NAMES utf8mb4 */;
 
 --
--- Database: `transport`
+-- Database: `dbms_project`
 --
 
 -- --------------------------------------------------------
@@ -51,6 +51,14 @@ CREATE TABLE `bus_stop` (
   `Coordinates` float NOT NULL COMMENT 'Latitude and longitudes of the location'
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
+--
+-- Dumping data for table `bus_stop`
+--
+
+INSERT INTO `bus_stop` (`Bus_Stop_ID`, `Place`, `Coordinates`) VALUES
+(1, 'C', 0),
+(10, 'C', 1000);
+
 -- --------------------------------------------------------
 
 --
@@ -77,6 +85,31 @@ CREATE TABLE `conductor` (
   `Salary` int(11) NOT NULL COMMENT 'Salary of the conductor'
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
+--
+-- Dumping data for table `conductor`
+--
+
+INSERT INTO `conductor` (`Name`, `Conductor_Id`, `Contact_No`, `Salary`) VALUES
+('B', 1, 108, 100000);
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `customer`
+--
+
+CREATE TABLE `customer` (
+  `username` varchar(30) NOT NULL,
+  `password` varchar(30) NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+
+--
+-- Dumping data for table `customer`
+--
+
+INSERT INTO `customer` (`username`, `password`) VALUES
+('shashi', '1');
+
 -- --------------------------------------------------------
 
 --
@@ -91,6 +124,13 @@ CREATE TABLE `driver` (
   `License_No` varchar(30) NOT NULL COMMENT 'License number of the driver'
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
+--
+-- Dumping data for table `driver`
+--
+
+INSERT INTO `driver` (`Name`, `Driver_Id`, `Contact_No`, `Salary`, `License_No`) VALUES
+('A', 1, 100, 100000, '1012');
+
 -- --------------------------------------------------------
 
 --
@@ -102,6 +142,13 @@ CREATE TABLE `owner` (
   `Owner_Name` varchar(30) NOT NULL,
   `Contact_No` int(11) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+
+--
+-- Dumping data for table `owner`
+--
+
+INSERT INTO `owner` (`Owner_ID`, `Owner_Name`, `Contact_No`) VALUES
+(0, '', 0);
 
 --
 -- Indexes for dumped tables
