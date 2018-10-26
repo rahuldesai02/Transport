@@ -19,7 +19,7 @@
 		</title>
 	</head>
 	<body class = "container-fluid" style = "background-image: url(bg3.jpg);height: 100%;background-position: center;background-repeat: no-repeat;background-size: cover;">
-		<h1>TRANSPORT DBMS</h1>
+		<h1>TRANSPORT DBMS|ADMINISTRATOR</h1>
 		<nav class="navbar navbar-default">
 		<div class="container-fluid">
 			<div class="navbar-header">
@@ -127,10 +127,6 @@
 								<label for = "place">Place:</label>
 								<input type = "text" class="form-control" id="place" name = "place"/>
 							</div>
-							<div class="form-group">
-								<label for = "coordinates">Coordinates:</label>
-								<input type = "text" class="form-control" id="coordinates" name = "coordinates"/>
-							</div>
 								<button type="submit" class="btn btn-default">Submit</button>
 							</form>
 					</li>
@@ -148,7 +144,7 @@
 							</div>
 							<div class="form-group">
 								<label for = "contactno">Contact number:</label>
-								<input type = "text" class="form-control" id="contact" name = "contact"/>
+								<input type = "text" class="form-control" id="contactno" name = "contactno"/>
 							</div>
 								<button type="submit" class="btn btn-default">Submit</button>
 							</form>
@@ -162,16 +158,24 @@
 								<input type = "text" class="form-control" id="bus" name = "bus"/>
 							</div>
 							<div class="form-group">
-								<label for = "busstop">Bus-Stop ID:</label>
-								<input type = "text" class="form-control" id="busstop" name = "busstop"/>
+								<label for = "busstop">Source Bus-Stop ID:</label>
+								<input type = "text" class="form-control" id="busstop" name = "source"/>
+							</div>
+							<div class="form-group">
+								<label for = "departure">Destination Bus-Stop ID:</label>
+								<input type = "text" class="form-control" id="departure" name = "destination"/>
+							</div>
+							<div class="form-group">
+								<label for = "departure">Departure:</label>
+								<input type = "text" class="form-control" id="departure" name = "departure"/>
 							</div>
 							<div class="form-group">
 								<label for = "arrival">Arrival:</label>
 								<input type = "text" class="form-control" id="arrival" name = "arrival"/>
 							</div>
 							<div class="form-group">
-								<label for = "departure">Departure:</label>
-								<input type = "text" class="form-control" id="departure" name = "departure"/>
+								<label for = "fare">Fare:</label>
+								<input type = "text" class="form-control" id="fare" name = "fare"/>
 							</div>
 								<button type="submit" class="btn btn-default">Submit</button>
 							</form>

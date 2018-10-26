@@ -1,5 +1,8 @@
 <?php
-	$link=mysqli_connect("localhost","root","","DBMS_project");
+	session_start();
+	$_SESSION['username'] = $_POST['useruname'];
+	echo '<div class="text-right"><h3>Logged in as: '.$_SESSION['username'].'</h3></div>';
+	$link=mysqli_connect("localhost","root","","transport");
 	if($link === false)
 	{
 		die("ERROR:COULD NOT CONNECT".mysqli_connect_error());
@@ -14,12 +17,20 @@
 		echo "password cannot be empty";
 		exit;
 	}
-	$sql="SELECT username FROM customer WHERE username = '$_POST[useruname]' AND password = '$_POST[userpassword]'";
+	$_SESSION['username'] = $_POST['useruname'];
+	$sql="SELECT username,password FROM customer";
 	$result = mysqli_query($link,$sql);
 	if($result)
 	{
-		$row = mysqli_fetch_array($result);
-		if(empty($row[0]))
+		$flag = 0;
+		while($row = mysqli_fetch_assoc($result))
+		{
+			if($row['username'] == $_POST['useruname'] and $row['password'] == $_POST['userpassword'])
+			{
+				$flag = 1;
+			}
+		}
+		if($flag == 0)
 		{
 			echo "username or password incorrect";
 			exit;
@@ -42,39 +53,36 @@
 	<title>Transport DBMS|Customer</title>
 </head>
 <body class="container-fluid" style = "background-image: url(bg2.jpg);height: 100%;background-position: center;background-repeat: no-repeat;background-size: cover;">
-	<h1 class="text-center bg-success">TRANSPORT DBMS</h1>
+	<h1 class="text-center bg-success">TRANSPORT DBMS|CUSTOMER</h1>
 	<div id="myCarousel" class="carousel slide" data-ride="carousel">
   	<!-- Indicators -->
   	
  	<!-- Wrapper for slides -->
  	<div class="carousel-inner">
 		<div class="item active">
-     		<div class="container">
- 				<div class="container-fluid" onclick="location.href='smart-index.html';" style="cursor: pointer; background-color: rgb(255,255,255,0.5);";>
-    				<h1 class="text-center">Book a ticket</h1>
+ 				<div class="container-fluid" onclick="location.href='Book.php';" style="cursor: pointer; background-color: rgb(255,255,255,0.5); height:80%;display: flex; align-items: center; justify-content: center";>
+    				<p style="font-size:4em">Book a ticket</p>
   				</div>
-			</div>
     	</div>
     	<div class="item">
-      		<div class="container">
- 				<div class="container-fluid" onclick="location.href='2048-index.htm';" style="cursor: pointer;  background-color: rgb(255,255,255,0.5);">
-    				<h1 class="text-center">Locate a bus</h1>
+ 				<div class="container-fluid" onclick="location.href='locate.php';" style="cursor: pointer;  background-color: rgb(255,255,255,0.5); height:80%;display: flex; align-items: center; justify-content: center">
+    				<p style="font-size:4em">Locate a bus</p>
   				</div>
-			</div>
     	</div>
     	<div class="item">
-      		<div class="container">
- 				<div class="container-fluid" onclick="location.href='ms-index.htm';" style="cursor: pointer;  background-color: rgb(255,255,255,0.5);">
-    				<h1 class="text-center">Bus Time-table</h1>
+ 				<div class="container-fluid" onclick="location.href='BusSchedule.php';" style="cursor: pointer;  background-color: rgb(255,255,255,0.5); height:80%;display: flex; align-items: center; justify-content: center">
+    				<p style="font-size:4em">Bus Schedule</p>
   				</div>
-			</div>
     	</div>
     	<div class="item">
-      		<div class="container">
- 				<div class="container-fluid" onclick="location.href='gp-index.htm';" style="cursor: pointer;  background-color: rgb(255,255,255,0.5);">
-    				<h1 class="text-center">Coming soon</h1>
+ 				<div class="container-fluid" onclick="location.href='BusStopSchedule.php';" style="cursor: pointer;  background-color: rgb(255,255,255,0.5); height:80%;display: flex; align-items: center; justify-content: center">
+    				<p style="font-size:4em">Bus-stop Time-table</p>
   				</div>
-			</div>
+    	</div>
+		<div class="item">
+ 				<div class="container-fluid" onclick="location.href='BusDetails.php';" style="cursor: pointer;  background-color: rgb(255,255,255,0.5); height:80%;display: flex; align-items: center; justify-content: center">
+    				<p style="font-size:4em">Bus Details</p>
+  				</div>
     	</div>
   	</div>
 	<ol class="carousel-indicators">
@@ -82,6 +90,7 @@
     	<li data-target="#myCarousel" data-slide-to="1"></li>
     	<li data-target="#myCarousel" data-slide-to="2"></li>
     	<li data-target="#myCarousel" data-slide-to="3"></li>
+		<li data-target="#myCarousel" data-slide-to="4"></li>
   	</ol>
 	</div>
   <!-- Left and right controls -->

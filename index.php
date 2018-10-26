@@ -13,7 +13,7 @@
 		</title>
 	</head>
 	<body class = "container-fluid" background = "bg.jpg">
-		<h1>TRANSPORT DBMS</h1>
+		<h1>TRANSPORT DBMS|HOME</h1>
 		<nav class="navbar navbar-inverse">
 		<div class="container-fluid">
 			<div class="navbar-header">

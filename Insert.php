@@ -1,6 +1,6 @@
 <?php
 		
-	$link=mysqli_connect("localhost","root","","DBMS_project");
+	$link=mysqli_connect("localhost","root","","transport");
 	if($link === false)
 	{
 		die("ERROR:COULD NOT CONNECT".mysqli_connect_error());
@@ -23,19 +23,18 @@
 	}
 	else if(isset($_POST['busstopid']))
 	{
-		$sql="INSERT INTO bus_stop values ('$_POST[busstopid]','$_POST[place]','$_POST[coordinates]')";
+		$sql="INSERT INTO bus_stop values ('$_POST[busstopid]','$_POST[place]')";
 	}
 	else if(isset($_POST['arrival']))
 	{
-		$sql="INSERT INTO bus_stops_at values ('$_POST[bus]','$_POST[busstop]','$_POST[arrival]','$_POST[departure]')";
+		$sql="INSERT INTO bus_journey values ('$_POST[bus]','$_POST[source]','$_POST[destination]','$_POST[departure]','$_POST[arrival]','$_POST[fare]')";
 	}
 	if(mysqli_query($link,$sql))
 	{
-		echo "Record inserted successfully";
+		echo "<script>alert('Record inserted successfully'); window.history.go(-1);</script>";
 	}
 	else
 	{
 		echo "ERROR:could not Insert $sql".mysqli_error($link);
 	}
 ?>
-

@@ -1,6 +1,6 @@
 <?php
 		
-	$link=mysqli_connect("localhost","root","","DBMS_project");
+	$link=mysqli_connect("localhost","root","","transport");
 	if($link === false)
 	{
 		die("ERROR:COULD NOT CONNECT".mysqli_connect_error());
